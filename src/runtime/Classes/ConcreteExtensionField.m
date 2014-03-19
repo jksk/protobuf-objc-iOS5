@@ -383,7 +383,7 @@ int32_t typeSize(PBExtensionType type) {
     [output writeTag:fieldNumber format:PBWireFormatLengthDelimited];
     int32_t dataSize = 0;
     if (typeIsFixedSize(type)) {
-      dataSize = values.count * typeSize(type);
+      dataSize = (uint32_t)values.count * typeSize(type);
     } else {
       for (id value in values) {
         dataSize += [self computeSingleSerializedSizeNoTag:value];
